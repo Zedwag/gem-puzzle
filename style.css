@@ -1,0 +1,360 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+body {
+    background-color: rgb(225, 225, 255);}
+
+input {
+    background-color: transparent;
+    border: none;
+}
+
+.game_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+}
+
+.menu_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 75px;
+    box-sizing: border-box;
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Cousine', monospace;
+    color: rgb(116, 116, 108);
+}
+
+.menu_button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-family: 'Cousine', monospace;
+    color: rgb(116, 116, 108);
+}
+
+.menu_button:hover {
+    color: rgb(77, 77, 70);
+    text-shadow: 1px 1px 5px rgb(94, 84, 75);
+    cursor: pointer;
+}
+
+.field {
+    width: 400px;
+    height: 400px;
+    border: 1px solid rgb(115, 114, 109);
+    border-radius: 10px;
+    background-color: rgb(225, 225, 255);position: relative;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 25%;
+    border: 1px solid rgb(116, 116, 108);
+    border-radius: 10px;
+    font-size: 35px;
+    font-family: 'Cousine', monospace;
+    font-weight: 700;
+    color: rgb(237, 237, 237);
+    background-color: rgb(160, 160, 220);
+    position: absolute;
+    transition: all 0.3s;
+}
+
+.cell:hover {
+    cursor: pointer;
+    background: rgba(160, 160, 220, 0.7);
+}
+
+.empty {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.overlay.visible {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    z-index: 99;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 99;
+    background: rgba(116, 116, 108, 0.8);
+    border: 2px solid rgb(115, 114, 109);
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.menu_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0px auto;
+    display: none;
+}
+
+.menu_container.active {
+    display: flex;
+}
+
+.main_menu_button {
+    margin: 10px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: rgb(210, 210, 230);
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+}
+
+.main_menu_button:hover {
+    color: rgb(160, 160, 220);
+    text-shadow: 2px 2px 5px rgb(26, 23, 20);
+    cursor: pointer;
+}
+
+.main_menu_field-size {
+    margin: 10px;
+}
+
+.main_menu_field-label {
+    color: rgb(210, 210, 230);
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+    margin-right: 15px;
+}
+
+.main_menu_field-select {
+    width: 100px;
+    color: rgb(210, 210, 230);
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+    background: rgba(116, 116, 108, 0.6);
+    border: 1px solid rgb(115, 114, 109);
+    border-radius: 10px;
+}
+
+.main_menu_field-text {
+    background: rgb(123, 120, 111);
+    color: rgb(210, 210, 230);
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+}
+
+.save_game_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    display: none;
+}
+
+.save_game_container.active {
+    display: flex;
+}
+
+.save_game_text {
+    font-size: 18px;
+    font-family: 'Cousine', monospace;
+    color: rgb(225, 225, 255);}
+
+.save_game_button {
+    margin-top: 10px;
+    padding: 5px 20px;
+    cursor: pointer;
+    border: 1px solid rgb(116, 116, 108);
+    box-shadow: 2px 2px 5px rgba(56, 50, 43, 0.8);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Cousine', monospace;
+    color: rgb(116, 116, 108);
+    background-color: rgb(225, 225, 255);}
+
+.save_game_button:hover {
+    cursor: pointer;
+    background-color: rgb(180, 180, 205);
+    box-shadow: 2px 2px 5px rgb(37, 33, 28);
+}
+
+.popup_won-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.popup_won-container.active {
+    display: flex;
+}
+
+.popup_won-header {
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+    color: rgb(210, 210, 230);
+    margin: 10px;
+}
+
+.popup_won-ok-button {
+    margin: 30px 10px 10px;
+    padding: 5px 20px;
+    cursor: pointer;
+    border: 1px solid rgb(116, 116, 108);
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Cousine', monospace;
+    color: rgb(116, 116, 108);
+    background-color: rgb(225, 225, 255);
+    box-shadow: 2px 2px 5px rgba(56, 50, 43, 0.8);
+}
+
+.popup_won-ok-button:hover {
+    cursor: pointer;
+    background-color: rgb(180, 180, 205);
+    box-shadow: 2px 2px 5px rgb(37, 33, 28);
+}
+
+.saved_game-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+}
+
+.saved_game-container.active {
+    display: flex;
+}
+
+.saved_game-header {
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+    color: rgb(210, 210, 230);
+    margin: 10px;
+}
+
+.saved_game-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.saved_game-text {
+    font-family: 'Cousine', monospace;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(210, 210, 230);
+    margin: 10px;
+}
+
+.saved_game-button-load {
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+    color: rgb(210, 210, 230);
+    margin: 10px;
+    background: transparent;
+    border: none;
+    display: none;
+}
+
+.saved_game-button-load.active {
+    display: contents;
+}
+
+.saved_game-button-load:hover {
+    color: rgb(180, 180, 205);
+    text-shadow: 2px 2px 5px rgb(26, 23, 20);
+    cursor: pointer;
+}
+
+.best_game-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    display: none;
+}
+
+.best_game-container.active {
+    display: flex;
+}
+
+.best_game-header {
+    font-family: 'Cousine', monospace;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgb(56, 50, 43);
+    color: rgb(210, 210, 230);
+    margin: 10px;
+}
+
+.best_game-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.best_game-text {
+    font-family: 'Cousine', monospace;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(210, 210, 230);
+    margin: 0 15px;
+    text-align: center;
+}
+
+.button-back {
+    margin: 30px 10px 10px;
+    padding: 5px 20px;
+    cursor: pointer;
+    border: 1px solid rgb(116, 116, 108);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Cousine', monospace;
+    color: rgb(116, 116, 108);
+    background-color: rgb(225, 225, 255);
+    box-shadow: 2px 2px 5px rgba(56, 50, 43, 0.8);
+}
+
+.button-back:hover {
+    cursor: pointer;
+    background-color: rgb(180, 180, 205);
+    box-shadow: 2px 2px 5px rgb(37, 33, 28);
+}
